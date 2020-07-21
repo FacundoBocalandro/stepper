@@ -1,11 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import {View, Button, Image} from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 import Constants from "expo-constants";
 
-const ImageUpload = () => {
-    const [selectedImage, setSelectedImage] = useState(null);
+const ImageUpload = (props) => {
 
     useEffect(() => {
         getPermissionAsync();
@@ -29,7 +28,7 @@ const ImageUpload = () => {
                 quality: 1,
             });
             if (!result.cancelled) {
-                setSelectedImage({ image: result.uri });
+                props.setSelectedImage({ image: result.uri });
             }
 
             console.log(result);
@@ -40,7 +39,7 @@ const ImageUpload = () => {
 
     return (
         <View>
-            {selectedImage && <Image source={{uri: selectedImage.image}} style={{width: 200, height: 200, marginBottom: 10}}/>}
+            {props.selectedImage && <Image source={{uri: props.selectedImage.image}} style={{width: 200, height: 200, marginBottom: 10}}/>}
             <Button onPress={() => _pickImage()} title={"Select Image"}/>
         </View>
     );
