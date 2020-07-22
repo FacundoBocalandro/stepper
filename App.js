@@ -1,43 +1,12 @@
-import React, {useState} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import ImageUpload from "./second_step/ImageUpload";
-import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
-import FirstStep from "./first-step/FirstStep";
-import {checkFirstStepValidity, constFirstStep} from "./first-step/utils";
-import ThirdStep from "./third-step/ThirdStep";
+import React from 'react';
+import Stepper from "./containers/StepperContainer";
+import {Provider} from 'react-redux';
+import configureStore from "./Store";
 
-export default function App() {
-
-    const [firstStep, setFirstStep] = React.useState(constFirstStep)
-    const [selectedImage, setSelectedImage] = useState(null);
-
-
-    return (
-        <View style={styles.container}>
-            <ProgressSteps>
-                <ProgressStep label="First Step" onNext={() => checkFirstStepValidity(firstStep, setFirstStep)} errors={firstStep.error.hasError}>
-                    <View>
-                        <FirstStep firstStep={firstStep} setFirstStep={setFirstStep}/>
-                    </View>
-                </ProgressStep>
-                <ProgressStep label="Second Step">
-                    <View style={{alignItems: 'center'}}>
-                        <ImageUpload selectedImage={selectedImage} setSelectedImage={setSelectedImage}/>
-                    </View>
-                </ProgressStep>
-                <ProgressStep label="Third Step">
-                    <View>
-                        <ThirdStep/>
-                    </View>
-                </ProgressStep>
-            </ProgressSteps>
-        </View>
-    );
+export default function App(){
+    return(
+        <Provider store={configureStore()}>
+            <Stepper/>
+        </Provider>
+    )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        top: 10,
-    },
-});

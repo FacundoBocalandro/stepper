@@ -3,7 +3,6 @@ import React from 'react';
 import {Form, Item, Input, Text} from 'native-base';
 
 export default function FirstStep(props) {
-
     return (
         <Form>
             <Item>
@@ -51,6 +50,11 @@ export default function FirstStep(props) {
                        })}
                 />
             </Item>
+            {props.firstStep.error.passwordLength?
+                <Text style={{color: 'red'}}>Password must have at least 4 characters!</Text>
+                :
+                <></>
+            }
             <Item>
                 <Input placeholder="Repeat Password"
                        secureTextEntry
@@ -63,7 +67,7 @@ export default function FirstStep(props) {
                        })}
                 />
             </Item>
-            {props.firstStep.error.passwordError?
+            {props.firstStep.error.passwordEquals?
                 <Text style={{color: 'red'}}>Password not matching!</Text>
                 :
                 <></>
