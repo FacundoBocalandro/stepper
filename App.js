@@ -15,11 +15,6 @@ export default function App() {
     return (
         <View style={styles.container}>
             <ProgressSteps>
-                <ProgressStep label="Third Step">
-                    <View>
-                        <ThirdStep/>
-                    </View>
-                </ProgressStep>
                 <ProgressStep label="First Step" onNext={() => checkFirstStepValidity(firstStep, setFirstStep)} errors={firstStep.error.hasError}>
                     <View>
                         <FirstStep firstStep={firstStep} setFirstStep={setFirstStep}/>
@@ -28,6 +23,11 @@ export default function App() {
                 <ProgressStep label="Second Step">
                     <View style={{alignItems: 'center'}}>
                         <ImageUpload selectedImage={selectedImage} setSelectedImage={setSelectedImage}/>
+                    </View>
+                </ProgressStep>
+                <ProgressStep label="Third Step">
+                    <View>
+                        <ThirdStep/>
                     </View>
                 </ProgressStep>
             </ProgressSteps>
