@@ -3,7 +3,6 @@ import React from 'react';
 import {Form, Item, Input, Text} from 'native-base';
 
 export default function FirstStep(props) {
-
     return (
         <Form>
             <Item>
@@ -17,7 +16,7 @@ export default function FirstStep(props) {
                        })}
                 />
             </Item>
-            {props.error.emailError?
+            {props.firstStep.error.emailError?
                 <Text style={{color: 'red'}}>Invalid Email!</Text>
                 :
                 <></>
@@ -34,7 +33,7 @@ export default function FirstStep(props) {
                        })}
                 />
             </Item>
-            {props.error.usernameError?
+            {props.firstStep.error.usernameError?
                 <Text style={{color: 'red'}}>Username should have at least 4 characters!</Text>
                 :
                 <></>
@@ -51,7 +50,7 @@ export default function FirstStep(props) {
                        })}
                 />
             </Item>
-            {props.error.passwordLength?
+            {props.firstStep.error.passwordLength?
                 <Text style={{color: 'red'}}>Password must have at least 4 characters!</Text>
                 :
                 <></>
@@ -68,7 +67,7 @@ export default function FirstStep(props) {
                        })}
                 />
             </Item>
-            {props.error.passwordEquals?
+            {props.firstStep.error.passwordEquals?
                 <Text style={{color: 'red'}}>Password not matching!</Text>
                 :
                 <></>
@@ -76,4 +75,3 @@ export default function FirstStep(props) {
         </Form>
     );
 }
-

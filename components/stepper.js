@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         top: 10,
-        backgroundColor: "#112b4b"
     },
 });
 
