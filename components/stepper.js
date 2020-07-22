@@ -3,13 +3,11 @@ import { StyleSheet, Text, View } from 'react-native';
 import ImageUpload from "./second_step/ImageUpload";
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 import FirstStep from "../containers/FirstStepContainer";
-// import {checkFirstStepValidity, constFirstStep} from "./components/first-step/utils";
 import ThirdStep from "./third-step/ThirdStep";
 
 
 export default function Stepper(props) {
 
-    // const [firstStep, setFirstStep] = React.useState(constFirstStep)
     const [selectedImage, setSelectedImage] = useState(null);
 
 
@@ -40,6 +38,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         top: 10,
+        backgroundColor: "#112b4b"
     },
 });
 
