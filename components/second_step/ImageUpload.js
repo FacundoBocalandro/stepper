@@ -40,7 +40,7 @@ const ImageUpload = (props) => {
     return (
         <View>
             {props.selectedImage && <Image source={{uri: props.selectedImage.image}} style={{width: 200, height: 200, marginBottom: 10}}/>}
-            <Button onPress={() => _pickImage()} title={"Select Image"}/>
+            <Button onPress={() => _pickImage()} title={"Select Image"} color={"#359c17"}/>
         </View>
     );
 }

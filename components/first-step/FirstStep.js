@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {StyleSheet} from "react-native";
 import {Form, Item, Input, Text} from 'native-base';
 
 export default function FirstStep(props) {
@@ -14,10 +14,13 @@ export default function FirstStep(props) {
                            ...props.firstStep,
                            email: text,
                        })}
+                       style={styles.inputText}
+                       placeholderTextColor={"#e9e0e0"}
+                       borderBottomColor={"white"}
                 />
             </Item>
             {props.firstStep.error.emailError?
-                <Text style={{color: 'red'}}>Invalid Email!</Text>
+                <Text style={styles.inputError}>Invalid Email!</Text>
                 :
                 <></>
             }
@@ -31,10 +34,13 @@ export default function FirstStep(props) {
                            ...props.firstStep,
                            username: text,
                        })}
+                       style={styles.inputText}
+                       placeholderTextColor="#e9e0e0"
+                       borderBottomColor="white"
                 />
             </Item>
             {props.firstStep.error.usernameError?
-                <Text style={{color: 'red'}}>Username should have at least 4 characters!</Text>
+                <Text style={styles.inputError}>Username should have at least 4 characters!</Text>
                 :
                 <></>
             }
@@ -48,10 +54,13 @@ export default function FirstStep(props) {
                            ...props.firstStep,
                            password: text,
                        })}
+                       style={styles.inputText}
+                       placeholderTextColor="#e9e0e0"
+                       borderBottomColor="white"
                 />
             </Item>
             {props.firstStep.error.passwordLength?
-                <Text style={{color: 'red'}}>Password must have at least 4 characters!</Text>
+                <Text style={styles.inputError}>Password must have at least 4 characters!</Text>
                 :
                 <></>
             }
@@ -65,13 +74,27 @@ export default function FirstStep(props) {
                            ...props.firstStep,
                            repeat: text,
                        })}
+                       style={styles.inputText}
+                       placeholderTextColor="#e9e0e0"
+                       borderBottomColor="white"
                 />
             </Item>
             {props.firstStep.error.passwordEquals?
-                <Text style={{color: 'red'}}>Password not matching!</Text>
+                <Text style={styles.inputError}>Password not matching!</Text>
                 :
                 <></>
             }
         </Form>
     );
 }
+
+const styles = StyleSheet.create({
+    inputText: {
+        color: "white"
+    },
+    inputError: {
+        color: "red",
+        marginTop: 10,
+        marginLeft: 10
+    }
+})
