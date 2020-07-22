@@ -4,6 +4,7 @@ import {validateEmail} from '../components/first-step/utils';
 const registerMiddleware = store => next => action => {
     switch (action.type) {
         case CHECK_FIRST_STEP:
+            console.log(action.payload);
             const checkEmail = validateEmail(action.payload.email);
             const checkUsername = action.payload.username.length >= 4;
             const checkPassLength = action.payload.password.length >=4;

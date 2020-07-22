@@ -2,23 +2,31 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import ImageUpload from "./second_step/ImageUpload";
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
-import FirstStep from "../containers/FirstStepContainer";
+import FirstStep from "../components/first-step/FirstStep";
 // import {checkFirstStepValidity, constFirstStep} from "./components/first-step/utils";
 import ThirdStep from "./third-step/ThirdStep";
+import {constFirstStep, validateEmail} from "./first-step/utils";
+import {checkFirstStepValidity, setFirstStep} from "../actions/RegisterActions";
+// import {constFirstStep} from "./first-step/utils";
 
 
 export default function Stepper(props) {
 
-    // const [firstStep, setFirstStep] = React.useState(constFirstStep)
+    const [firstStep, setFirstStep] = React.useState({
+        email: '',
+        username: '',
+        password: '',
+        repeat: '',
+    })
     const [selectedImage, setSelectedImage] = useState(null);
 
 
     return (
         <View style={styles.container}>
             <ProgressSteps>
-                <ProgressStep label="First Step" onNext={() => props.checkFirstStepValidity(props.firstStep)} errors={props.firstStep.error.hasError}>
+                <ProgressStep label="First Step" onNext={() => checkFirstStepValidity(firstStep, props.setFirstStep)} errors={props.firstStep.error.hasError}>
                     <View>
-                        <FirstStep/>
+                        <FirstStep firstStep={firstStep} setFirstStep={setFirstStep} error={props.firstStep.error}/>
                     </View>
                 </ProgressStep>
                 <ProgressStep label="Second Step">
