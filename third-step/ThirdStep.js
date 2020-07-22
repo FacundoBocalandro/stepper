@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import MapView from 'react-native-maps';
+import MapView, {Marker} from 'react-native-maps';
 import {StyleSheet, Dimensions, Alert} from 'react-native';
 
 export default function ThirdStep() {
-    const [info, setInfo] = useState({})
-    const [fetched, setFetched] = useState(false);
+    const [info, setInfo] = useState({});
 
     useEffect(() => {
         let mounted = true;
@@ -30,7 +29,12 @@ export default function ThirdStep() {
                     latitudeDelta: 5,
                     longitudeDelta: 5,
                 }}
-            />
+            >
+                <Marker
+                    coordinate={{latitude: info.coords.latitude, longitude: info.coords.longitude}}
+                    title={"Your location"}
+                />
+            </MapView>
             :
             <></>
     )
