@@ -13,6 +13,7 @@ export default function Stepper(props) {
 
     return (
         <View style={styles.container}>
+            <View style={{backgroundColor: "#ffffff", padding: 10, borderBottomEndRadius: 20, borderBottomStartRadius: 20}}/>
             <ProgressSteps
                 activeStepIconBorderColor={"#33e3e3"}
                 activeStepNumColor={"#ffffff"}
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         top: 10,
-        backgroundColor: "#154b95"
+        backgroundColor: "#154b95",
     },
     nextBtnStyle: {
         color: "#fffcfc",
